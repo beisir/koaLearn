@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="//style.org.hc360.cn/js/build/source/core/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="https://style.org.hc360.com/js/build/source/core/hc.common.js"></script> -->
+</head>
+<body>
+    <h1><i><%= title %></i></h1>
+
+    <!-- <ul>
+        <% list.forEach(function (item, index){ %>
+            <% if (item.id % 2 === 0) { %>
+                <li style="background: yellow;"><b><%= item.title %></b></li>
+            <% } else { %>
+                <li style="background: red;" onclick="fn()"><%= item.title %></li>
+            <% } %>
+        <% }) %>
+
+    </ul> -->
+
+    <ul id="one" class="level-1">
+        <li class="item-i">I</li>
+        <li id="ii" class="item-ii">II
+            <ul class="level-2">
+                <li class="item-a">A</li>
+                <li class="item-b">B
+                    <ul class="level-3">
+                        <li class="item-1">1</li>
+                        <li class="item-2">2</li>
+                        <li class="item-3">3</li>
+                    </ul>
+                </li>
+                <li class="item-c">C</li>
+            </ul>
+        </li>
+        <li class="item-iii">III</li>
+    </ul>
+
+
+    <input type="file" name="file" id="file" />
+    <br />
+    <a href="mailto:hsy7426@163.com">hsy7426@163.com</a>
+<script type="text/javascript">
+    $('li.item-a').closest('ul').css('background-color', 'red');
+    window.dataResult = {
+        title: '<%= title %>',
+        list: <%- JSON.stringify(list[0]) %>
+    };
+    function fn() {
+        console.log(window.dataResult);
+    }
+
+    $('#file').on('change', function () {
+        var ele = $(this)[0];
+        var formData = new FormData();
+        formData.append('file', ele.files[0]);
+        formData.append('name', '<%= title %>');
+        $.ajax({
+            url: '/upload/imgup',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                console.log(response);
+            }
+        })
+    })
+</script>
+</body>
+</html>

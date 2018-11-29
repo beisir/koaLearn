@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="//style.org.hc360.cn/js/build/source/core/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Form 表单提交</h1>
+    <input type="text" name="username" />
+    <input type="password" name="password" />
+    <button type="button" id="button" name="button">提交</button>
+
+
+<script type="text/javascript">
+    // $('#button').on('click', function () {
+    //     $.ajax({
+    //         url: '/home/post',
+    //         type: 'POST',
+    //         data: {
+    //             username: $('input[type="text"]').val(),
+    //             password: $('input[type="password"]').val()
+    //         },
+    //         success: function (response) {
+    //             console.log(response);
+    //         }
+    //     });
+    // });
+    //
+    // $('input[type="text"]').on('keypress', function (e) {
+    //     e.preventDefault();
+    //     console.log(e.keyCode);
+    //     // console.log(e.stopPropagation());
+    // })
+
+    $.ajax({
+        url: 'https://m.haimi.com/api/nav/list?platform=WAP',
+        success: function (response) {
+            console.log(response);
+        }
+    });
+</script>
+
+
+</body>
+</html>
